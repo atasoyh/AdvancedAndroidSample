@@ -2,4 +2,28 @@
 
 https://google.github.io/dagger/android
 
+Error:
+/Users/ibrahimyilmaz/AdvancedAndroidSample/app/build/tmp/kapt3/stubs/debug/me/ibrahimyilmaz/advancedandroidsample/di/base/SampleApplicationComponent.java:13:
+error: java.util.Map<java.lang.Class<? extends android.app.Activity>,javax.inject.Provider<dagger.android.AndroidInjector.Factory<? extends android.app.Activity>>>
+cannot be provided without an @Provides-annotated method.
+
+Solution:
+In ApplicationComponent, we have to add AndroidInjectionModule::class
+
+-----
+
+Error:
+e: /Users/ibrahimyilmaz/AdvancedAndroidSample/app/build/tmp/kapt3/stubs/debug/me/ibrahimyilmaz/advancedandroidsample/di/base/SampleApplicationComponent.java:11: error: [dagger.android.AndroidInjector.inject(T)] java.util.Map<java.lang.Class<? extends android.support.v4.app.Fragment>,javax.inject.Provider<dagger.android.AndroidInjector.Factory<? extends android.support.v4.app.Fragment>>> cannot be provided without an @Provides-annotated method.
+public abstract interface SampleApplicationComponent {
+                ^
+      java.util.Map<java.lang.Class<? extends android.support.v4.app.Fragment>,javax.inject.Provider<dagger.android.AndroidInjector.Factory<? extends android.support.v4.app.Fragment>>> is injected at
+          dagger.android.DispatchingAndroidInjector.<init>(injectorFactories)
+      dagger.android.DispatchingAndroidInjector<android.support.v4.app.Fragment> is injected at
+          me.ibrahimyilmaz.advancedandroidsample.base.BaseActivity.fragmentInjector
+      me.ibrahimyilmaz.advancedandroidsample.MainActivity is injected at
+          dagger.android.AndroidInjector.inject(arg0)
+
+Solution:
+In ApplicationComponent, we have to add AndroidSupportInjectionModule::class
+
 
