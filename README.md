@@ -10,13 +10,13 @@ It covers
  - Dagger2
  - MVVM
  - Retrofit
+ - Room
+ - 2 Level Cache(File, Memory)
  
 It will cover
   - TDD
   -  Android UI Test
   -  Corotounes
-  -  Room
-  -  2 Level Cache(File, Memory)
   -  WorkManager
   -  ConstraintLayout
   -  Android KTX (More)
