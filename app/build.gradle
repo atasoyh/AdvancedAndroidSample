@@ -59,6 +59,9 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$versionGlide"
     annotationProcessor "com.github.bumptech.glide:compiler:$versionGlide"
 
+    implementation "android.arch.persistence.room:runtime:$versionRoom"
+    kapt "android.arch.persistence.room:compiler:$versionRoom"
+    implementation "android.arch.persistence.room:rxjava2:$versionRoom"
 
 
 }

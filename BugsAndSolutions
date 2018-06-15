@@ -35,6 +35,7 @@ Solution:
 
 <import type="android.view.View" />
 
+----
 
 Error:
         org.threeten.bp.zone.ZoneRulesException: No time-zone data files registered
@@ -44,6 +45,12 @@ For Android project you should use
 
 compile 'com.jakewharton.threetenabp:threetenabp:1.0.3
 
+----
 
+Error:
+     Caused by: java.lang.RuntimeException: cannot find implementation for me.ibrahimyilmaz.advancedandroidsample.data.AppDatabase. AppDatabase_Impl does not exist
+
+Solution:
+use kapt instead of annotationProcessor
 
 

@@ -35,6 +35,7 @@ ext {
     versionMoshi = "1.6.0"
     threeTenAbpVersion = '1.0.3'
     versionGlide = '4.7.1'
+    versionRoom = "1.1.0"
 
 }
 task clean(type: Delete) {
