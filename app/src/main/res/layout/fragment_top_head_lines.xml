@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".topheadlines.TopHeadLinesFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="me.ibrahimyilmaz.advancedandroidsample.topheadlines.TopHeadLinesAdapter" />
+
+
+        <variable
+            name="state"
+            type="me.ibrahimyilmaz.advancedandroidsample.topheadlines.TopHeadLinesState" />
+
+    </data>
+
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:paddingTop="4dp"
+        tools:context=".topheadlines.TopHeadLinesFragment">
 
-</FrameLayout>
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{state.loading? View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@{state.errorMessage}"
+            android:visibility="@{state.errorMessage.empty?View.GONE:View.VISIBLE}" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvArticles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{state.loading|| !state.errorMessage.empty ||state.articles.size()==0 ? View.GONE:View.VISIBLE}"
+            binding:articles="@{state.articles}" />
+    </LinearLayout>
+</layout>

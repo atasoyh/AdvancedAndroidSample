@@ -2,6 +2,7 @@ package me.ibrahimyilmaz.advancedandroidsample.app
 
 import android.app.Activity
 import android.app.Application
+import com.jakewharton.threetenabp.AndroidThreeTen
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -28,5 +29,6 @@ class SampleApplication : Application(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
         applicationComponent.inject(this)
+        AndroidThreeTen.init(this)
     }
 }

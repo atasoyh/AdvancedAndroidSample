@@ -19,6 +19,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -30,13 +34,31 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
 
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha02'
 
     implementation "com.google.dagger:dagger-android:$versionDagger"
     implementation "com.google.dagger:dagger-android-support:$versionDagger"
     annotationProcessor "com.google.dagger:dagger-android-processor:$versionDagger"
     kapt "com.google.dagger:dagger-compiler:$versionDagger"
     kapt "com.google.dagger:dagger-android-processor:$versionDagger"
+
+
+    implementation "io.reactivex.rxjava2:rxandroid:$versionRxAndroid"
+    implementation "io.reactivex.rxjava2:rxjava:$versionRxJava"
+
+    implementation "com.squareup.retrofit2:retrofit:$versionRetrofit"
+    implementation "com.squareup.moshi:moshi:$versionMoshi"
+    implementation "com.squareup.retrofit2:converter-moshi:$versionRetrofit"
+    implementation "com.squareup.moshi:moshi-kotlin:$versionMoshi"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$versionRetrofit"
+
+    implementation "com.jakewharton.threetenabp:threetenabp:$threeTenAbpVersion"
+
+    implementation "com.github.bumptech.glide:glide:$versionGlide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$versionGlide"
+
 
 
 }

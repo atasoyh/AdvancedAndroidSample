@@ -3,10 +3,12 @@ package me.ibrahimyilmaz.advancedandroidsample.base
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 
@@ -26,6 +28,11 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(layoutResID)
+        if (fragmentContainer == null)
+            throw IllegalArgumentException("Activity should contain fragmentContainer")
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        return NavHostFragment.findNavController(fragmentContainer).navigateUp()
+    }
 }

@@ -29,6 +29,13 @@ ext {
     versionTargetSdk = 27
     versionAppCompat = "27.1.1"
     versionDagger = "2.15"
+    versionRxAndroid = "2.0.2"
+    versionRxJava = "2.1.12"
+    versionRetrofit = "2.4.0"
+    versionMoshi = "1.6.0"
+    threeTenAbpVersion = '1.0.3'
+    versionGlide = '4.7.1'
+
 }
 task clean(type: Delete) {
     delete rootProject.buildDir

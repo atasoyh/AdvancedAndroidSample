@@ -3,7 +3,7 @@
 https://google.github.io/dagger/android
 
 Error:
-/Users/ibrahimyilmaz/AdvancedAndroidSample/app/build/tmp/kapt3/stubs/debug/me/ibrahimyilmaz/advancedandroidsample/di/base/SampleApplicationComponent.java:13:
+/Users/ibrahimyilmaz/AdvancedAndroidSample/app/httpUrl/tmp/kapt3/stubs/debug/me/ibrahimyilmaz/advancedandroidsample/di/base/SampleApplicationComponent.java:13:
 error: java.util.Map<java.lang.Class<? extends android.app.Activity>,javax.inject.Provider<dagger.android.AndroidInjector.Factory<? extends android.app.Activity>>>
 cannot be provided without an @Provides-annotated method.
 
@@ -13,7 +13,7 @@ In ApplicationComponent, we have to add AndroidInjectionModule::class
 -----
 
 Error:
-e: /Users/ibrahimyilmaz/AdvancedAndroidSample/app/build/tmp/kapt3/stubs/debug/me/ibrahimyilmaz/advancedandroidsample/di/base/SampleApplicationComponent.java:11: error: [dagger.android.AndroidInjector.inject(T)] java.util.Map<java.lang.Class<? extends android.support.v4.app.Fragment>,javax.inject.Provider<dagger.android.AndroidInjector.Factory<? extends android.support.v4.app.Fragment>>> cannot be provided without an @Provides-annotated method.
+e: /Users/ibrahimyilmaz/AdvancedAndroidSample/app/httpUrl/tmp/kapt3/stubs/debug/me/ibrahimyilmaz/advancedandroidsample/di/base/SampleApplicationComponent.java:11: error: [dagger.android.AndroidInjector.inject(T)] java.util.Map<java.lang.Class<? extends android.support.v4.app.Fragment>,javax.inject.Provider<dagger.android.AndroidInjector.Factory<? extends android.support.v4.app.Fragment>>> cannot be provided without an @Provides-annotated method.
 public abstract interface SampleApplicationComponent {
                 ^
       java.util.Map<java.lang.Class<? extends android.support.v4.app.Fragment>,javax.inject.Provider<dagger.android.AndroidInjector.Factory<? extends android.support.v4.app.Fragment>>> is injected at
@@ -25,5 +25,25 @@ public abstract interface SampleApplicationComponent {
 
 Solution:
 In ApplicationComponent, we have to add AndroidSupportInjectionModule::class
+
+------
+
+Error:
+****/ data binding error ****msg:Identifiers must have user defined types from the XML file. View is missing it file:/Users/ibrahimyilmaz/AdvancedAndroidSample/app/src/main/res/layout/fragment_top_head_lines.xml loc:20:49 - 20:52 ****\ data binding error ****
+
+Solution:
+
+<import type="android.view.View" />
+
+
+Error:
+        org.threeten.bp.zone.ZoneRulesException: No time-zone data files registered
+Solution:
+
+For Android project you should use
+
+compile 'com.jakewharton.threetenabp:threetenabp:1.0.3
+
+
 
 

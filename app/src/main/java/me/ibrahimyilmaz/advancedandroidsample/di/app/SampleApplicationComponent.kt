@@ -3,8 +3,10 @@ package me.ibrahimyilmaz.advancedandroidsample.di.app
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 import me.ibrahimyilmaz.advancedandroidsample.app.SampleApplication
+import me.ibrahimyilmaz.advancedandroidsample.di.base.NetworkModule
 import me.ibrahimyilmaz.advancedandroidsample.di.main.MainActivityModule
 import me.ibrahimyilmaz.advancedandroidsample.di.topheadlines.TopHeadLinesFragmentModule
+import me.ibrahimyilmaz.advancedandroidsample.di.topheadlines.TopHeadLinesServiceModule
 import javax.inject.Singleton
 
 /**
@@ -14,6 +16,8 @@ import javax.inject.Singleton
 @Component(modules = [
     (AndroidSupportInjectionModule::class),
     (SampleApplicationModule::class),
+    (NetworkModule::class),
+    (TopHeadLinesServiceModule::class),
     (MainActivityModule::class),
     (TopHeadLinesFragmentModule::class)
 ])
