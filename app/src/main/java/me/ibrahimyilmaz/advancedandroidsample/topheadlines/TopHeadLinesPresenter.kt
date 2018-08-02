@@ -19,6 +19,6 @@ class TopHeadLinesPresenter @Inject constructor(private val viewModel: TopHeadLi
             .doOnSubscribe { viewModel.onLoading(true) }
 //            .doOnEvent { t1, t2 -> viewModel.onLoading(false) }
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ t -> }))
+            .subscribe({ _ -> }))
 
 }

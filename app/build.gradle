@@ -63,6 +63,11 @@ dependencies {
     kapt "android.arch.persistence.room:compiler:$versionRoom"
     implementation "android.arch.persistence.room:rxjava2:$versionRoom"
 
+    testImplementation "android.arch.core:core-testing:$versionRoom"
+
+    testImplementation "org.mockito:mockito-core:$versionMockito"
+    testCompile "com.nhaarman.mockitokotlin2:mockito-kotlin:$versionMockitoKotlin"
+
 
 }
 repositories {

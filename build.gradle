@@ -36,6 +36,8 @@ ext {
     threeTenAbpVersion = '1.0.3'
     versionGlide = '4.7.1'
     versionRoom = "1.1.0"
+    versionMockito = "2.10.0"
+    versionMockitoKotlin = "2.0.0-RC1"
 
 }
 task clean(type: Delete) {
