@@ -12,13 +12,15 @@ It covers
  - Retrofit
  - Room
  - 2 Level Cache(File, Memory)
+ - TDD 
+ - Android UI Test
  
 It will cover
-  - TDD
-  -  Android UI Test
   -  Corotounes
   -  WorkManager
   -  ConstraintLayout
   -  Android KTX (More)
+  -  Android Navigation Component Test Best Practises(Single Unit of Testing matters in TDD or BDD, so we need to change start Fragment while testing it.)
+
  
 Any comment/ criticism/ something will be greately appreciated.
