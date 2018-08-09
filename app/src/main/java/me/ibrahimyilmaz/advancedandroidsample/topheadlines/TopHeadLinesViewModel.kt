@@ -16,7 +16,11 @@ class TopHeadLinesViewModel @Inject constructor() : ViewModel() {
         MutableLiveData<TopHeadLinesState>()
     }
 
-    fun onError(throwable: Throwable) = state.postValue(TopHeadLinesState(errorMessage = throwable.message!!))
+    fun onError(throwable: Throwable) {
+        val message = throwable.message ?: "error"
+        state.postValue(TopHeadLinesState(errorMessage = message))
+    }
+
     fun onLoading(boolean: Boolean) = state.postValue(TopHeadLinesState(loading = boolean))
     fun onListArticle(articles: List<Article>) = state.postValue(TopHeadLinesState(articles = articles))
 }

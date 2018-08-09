@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:binding="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -8,7 +7,6 @@
         <import type="android.view.View" />
 
         <import type="me.ibrahimyilmaz.advancedandroidsample.topheadlines.TopHeadLinesAdapter" />
-
 
         <variable
             name="state"
@@ -24,11 +22,13 @@
         tools:context=".topheadlines.TopHeadLinesFragment">
 
         <ProgressBar
+            android:id="@+id/pbLoading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="@{state.loading? View.VISIBLE:View.GONE}" />
 
         <TextView
+            android:id="@+id/tvMessage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@{state.errorMessage}"

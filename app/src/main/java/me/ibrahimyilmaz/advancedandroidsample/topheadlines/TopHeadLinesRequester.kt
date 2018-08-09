@@ -15,5 +15,5 @@ class TopHeadLinesRequester @Inject constructor(private val service: TopHeadLine
                     Status.ok -> response.articles
                     Status.error -> throw Throwable(message = response.message)
                 }
-            })
+            }).doOnError({ _ -> })
 }

@@ -4,7 +4,8 @@ import android.arch.lifecycle.Observer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import me.ibrahimyilmaz.advancedandroidsample.base.BaseTest
-import me.ibrahimyilmaz.advancedandroidsample.utils.TestHelper
+import me.ibrahimyilmaz.advancedandroidsample.utils.TestUtils
+import me.ibrahimyilmaz.newsitkotlin.model.TopHeadLineResponse
 import org.junit.Test
 
 
@@ -32,8 +33,8 @@ class TopHeadLinesViewModelTest : BaseTest() {
 
     @Test
     fun test_onListArticle() {
-        viewModel.onListArticle(TestHelper.getTopHeadLines())
-        verify(observer).onChanged(TopHeadLinesState(false, errorMessage = "", articles = TestHelper.getTopHeadLines()))
+        viewModel.onListArticle(TestUtils().loadJson("mock/top-headlines.json", TopHeadLineResponse::class.java)?.articles!!)
+        verify(observer).onChanged(TopHeadLinesState(false, errorMessage = "", articles = TestUtils().loadJson("mock/top-headlines.json", TopHeadLineResponse::class.java)?.articles!!))
     }
 
     @Test

@@ -7,7 +7,8 @@ import com.nhaarman.mockitokotlin2.verify
 import io.reactivex.Single
 import me.ibrahimyilmaz.advancedandroidsample.base.BaseTest
 import me.ibrahimyilmaz.advancedandroidsample.base.DisposableManager
-import me.ibrahimyilmaz.advancedandroidsample.utils.TestHelper
+import me.ibrahimyilmaz.advancedandroidsample.utils.TestUtils
+import me.ibrahimyilmaz.newsitkotlin.model.TopHeadLineResponse
 import org.junit.Test
 
 
@@ -30,7 +31,7 @@ class TopHeadLinesPresenterTest : BaseTest() {
         disposableManager = mock<DisposableManager>()
         observer = mock()
         repository = mock {
-            on { listArticles() } doReturn Single.just(TestHelper.getTopHeadLines())
+            on { listArticles() } doReturn Single.just(TestUtils().loadJson("mock/top-headlines.json", TopHeadLineResponse::class.java)?.articles!!)
         }
         viewModel = TopHeadLinesViewModel()
         presenter = TopHeadLinesPresenter(viewModel = viewModel, disposableManager = disposableManager, repository = repository)
@@ -45,7 +46,7 @@ class TopHeadLinesPresenterTest : BaseTest() {
     fun test_listArticles() {
         presenter.listArticles()
         verify(observer).onChanged(TopHeadLinesState(loading = true, articles = listOf(), errorMessage = ""))
-        verify(observer).onChanged(TopHeadLinesState(loading = false, articles = TestHelper.getTopHeadLines(), errorMessage = ""))
+        verify(observer).onChanged(TopHeadLinesState(loading = false, articles = TestUtils().loadJson("mock/top-headlines.json", TopHeadLineResponse::class.java)?.articles!!, errorMessage = ""))
 
     }
 }

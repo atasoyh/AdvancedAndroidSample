@@ -9,7 +9,7 @@ import me.ibrahimyilmaz.advancedandroidsample.app.SampleApplication
  * Created by ibrahimyilmaz on 6/12/18 Project AdvancedAndroidSample.
  */
 @Module
-class SampleApplicationModule(private val application: SampleApplication) {
+open class SampleApplicationModule(private val application: SampleApplication) {
 
     @Provides
     fun providesContext(): Context = application.applicationContext
