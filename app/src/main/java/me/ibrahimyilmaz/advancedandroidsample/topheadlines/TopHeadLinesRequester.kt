@@ -10,10 +10,10 @@ import javax.inject.Inject
 class TopHeadLinesRequester @Inject constructor(private val service: TopHeadLinesService) {
 
     fun listArticles() = service.listTopHeadLines("tr")
-            .map({ response: TopHeadLineResponse ->
+            .map { response: TopHeadLineResponse ->
                 when (response.status) {
                     Status.ok -> response.articles
                     Status.error -> throw Throwable(message = response.message)
                 }
-            }).doOnError({ _ -> })
+            }.doOnError({ _ -> })
 }

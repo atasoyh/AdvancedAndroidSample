@@ -1,14 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.41'
+    ext.kotlin_version = '1.2.51'
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-alpha17'
+        classpath 'com.android.tools.build:gradle:3.2.0-beta05'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -33,9 +33,9 @@ ext {
     versionRxJava = "2.1.12"
     versionRetrofit = "2.4.0"
     versionMoshi = "1.6.0"
-    threeTenAbpVersion = '1.0.3'
+    threeTenAbpVersion = '1.0.5'
     versionGlide = '4.7.1'
-    versionRoom = "1.1.0"
+    versionRoom = "1.1.1"
     versionMockito = "2.10.0"
     versionMockitoKotlin = "2.0.0-RC1"
 

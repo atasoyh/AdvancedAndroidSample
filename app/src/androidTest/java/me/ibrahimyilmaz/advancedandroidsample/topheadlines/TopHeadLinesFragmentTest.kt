@@ -6,6 +6,7 @@ import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import android.support.test.runner.AndroidJUnit4
+import android.support.v4.app.Fragment
 import me.ibrahimyilmaz.advancedandroidsample.R
 import me.ibrahimyilmaz.advancedandroidsample.test.FragmentTest
 import org.junit.Before
@@ -18,11 +19,14 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class TopHeadLinesFragmentTest : FragmentTest() {
+    override val testFragment: Fragment
+        get() = TopHeadLinesFragment.newInstance()
 
     @Before
     fun setUp() {
         topHeadLinesService.clearErrorFlag()
         topHeadLinesService.clearHoldFlag()
+
     }
 
 

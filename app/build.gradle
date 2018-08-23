@@ -28,7 +28,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$versionAppCompat"
-    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:support-v4:27.1.1'
     testImplementation 'junit:junit:4.12'
 
@@ -37,8 +37,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:recyclerview-v7:27.1.1'
-
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha02'
 
     implementation "com.google.dagger:dagger-android:$versionDagger"
     implementation "com.google.dagger:dagger-android-support:$versionDagger"
@@ -75,8 +73,6 @@ dependencies {
     androidTestAnnotationProcessor "com.google.dagger:dagger-android-processor:$versionDagger"
 
     kaptAndroidTest "com.google.dagger:dagger-compiler:$versionDagger"
-
-
 }
 repositories {
     mavenCentral()

@@ -3,6 +3,7 @@ package me.ibrahimyilmaz.advancedandroidsample.test
 import android.app.Activity
 import android.support.test.rule.ActivityTestRule
 import me.ibrahimyilmaz.advancedandroidsample.app.TestApplication
+import me.ibrahimyilmaz.advancedandroidsample.base.TestNavigator
 import me.ibrahimyilmaz.advancedandroidsample.topheadlines.TestTopHeadLinesService
 import me.ibrahimyilmaz.advancedandroidsample.topheadlines.TopHeadLinesRepository
 
@@ -20,6 +21,9 @@ class ControllerTestRule<T : Activity>(activityClass: Class<T>) : ActivityTestRu
         TestApplication.component.topHeadLinesRepository()
     }
 
+    val testNavigationModule: TestNavigator by lazy {
+        TestApplication.component.testNavigator()
+    }
 
     fun clearState() {
         testTopHeadLinesService.clearErrorFlag()

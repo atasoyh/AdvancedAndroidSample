@@ -1,6 +1,7 @@
 package me.ibrahimyilmaz.advancedandroidsample.test
 
 import android.content.Intent
+import android.support.v4.app.Fragment
 import me.ibrahimyilmaz.advancedandroidsample.main.MainActivity
 import org.junit.Rule
 
@@ -16,8 +17,12 @@ abstract class FragmentTest {
 
     protected var topHeadLinesService = testRule.testTopHeadLinesService
     protected var topHeadLinesRepository = testRule.repoRepository
+    protected var testNavigationModule = testRule.testNavigationModule
+
+    abstract val testFragment: Fragment
 
     protected fun launch() {
+        testNavigationModule.overridenFragment = testFragment
         launch(null)
     }
 
