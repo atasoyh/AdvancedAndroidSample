@@ -3,11 +3,18 @@ package me.ibrahimyilmaz.advancedandroidsample.base
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import me.ibrahimyilmaz.advancedandroidsample.R
+import me.ibrahimyilmaz.advancedandroidsample.selection.SelectionScreen
+import javax.inject.Singleton
 
 /**
  * Created by ibrahimyilmaz on 8/23/18 Project AdvancedAndroidSample.
  */
+@Singleton
 open class DefaultNavigator : Navigator {
+
+    constructor() {
+
+    }
 
     private lateinit var fragmentManager: FragmentManager
 
@@ -41,8 +48,14 @@ open class DefaultNavigator : Navigator {
         fragmentManager.push(fragment = fragment)
     }
 
-    override fun pop() {
-        fragmentManager.pop()
+    override fun pop() =
+            fragmentManager.pop()
+
+    /**
+     *
+     */
+    override fun goToSelectionScreen() {
+        push(SelectionScreen.newInstance())
     }
 
 }

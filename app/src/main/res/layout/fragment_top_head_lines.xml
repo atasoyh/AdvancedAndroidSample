@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:binding="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <data>
+    <!--<data>-->
 
-        <import type="android.view.View" />
+        <!--<import type="android.view.View" />-->
 
-        <import type="me.ibrahimyilmaz.advancedandroidsample.topheadlines.TopHeadLinesAdapter" />
+        <!--<import type="me.ibrahimyilmaz.advancedandroidsample.selection.TopHeadLinesAdapter" />-->
 
-        <variable
-            name="state"
-            type="me.ibrahimyilmaz.advancedandroidsample.topheadlines.TopHeadLinesState" />
+        <!--<variable-->
+            <!--name="selectArticleState"-->
+            <!--type="me.ibrahimyilmaz.advancedandroidsample.selection.ListArticleStatetate" />-->
 
-    </data>
+    <!--</data>-->
 
     <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingTop="4dp"
-        tools:context=".topheadlines.TopHeadLinesFragment">
+        tools:context=".selection.SelectionScreen">
 
-        <ProgressBar
-            android:id="@+id/pbLoading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="@{state.loading? View.VISIBLE:View.GONE}" />
+        <!--<ProgressBar-->
+        <!--android:id="@+id/pbLoading"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:visibility="@{selectArticleState.loading? View.VISIBLE:View.GONE}" />-->
 
-        <TextView
-            android:id="@+id/tvMessage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@{state.errorMessage}"
-            android:visibility="@{state.errorMessage.empty?View.GONE:View.VISIBLE}" />
+        <!--<TextView-->
+        <!--android:id="@+id/tvMessage"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:text="@{selectArticleState.messageId}"-->
+        <!--android:visibility="@{selectArticleState.messageId.empty?View.GONE:View.VISIBLE}" />-->
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvArticles"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="@{state.loading|| !state.errorMessage.empty ||state.articles.size()==0 ? View.GONE:View.VISIBLE}"
-            binding:articles="@{state.articles}" />
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/rvArticles"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:visibility="@{status.loading|| !status.messageId.empty ||status.articles.size()==0 ? View.GONE:View.VISIBLE}"-->
+        <!--binding:articles="@{status.articles}" />-->
+
+
+
+
     </LinearLayout>
 </layout>

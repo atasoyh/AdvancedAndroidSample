@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="me.ibrahimyilmaz.advancedandroidsample.selection.RateStatus" />
+
+        <import type="me.ibrahimyilmaz.advancedandroidsample.selection.SelectScreenStatus" />
+
+        <variable
+            name="presenter"
+            type="me.ibrahimyilmaz.advancedandroidsample.selection.SelectionPresenter" />
+
+        <variable
+            name="selectArticleState"
+            type="me.ibrahimyilmaz.advancedandroidsample.selection.SelectArticleState" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="16dp">
+
+        <ProgressBar
+            android:id="@+id/pb_waiting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:visibility="@{selectArticleState.status == SelectScreenStatus.ON_LOADING?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text='@{(selectArticleState.messageId > 0) ? context.getString(selectArticleState.messageId) : ""}'
+            android:textColor="@{selectArticleState.status == SelectScreenStatus.ON_ERROR?@color/error :@color/darkestIndigo}"
+            android:textSize="20sp"
+            android:visibility="@{selectArticleState.status == SelectScreenStatus.ON_ERROR||selectArticleState.status ==SelectScreenStatus.ON_FINISHED?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:id="@+id/tv_rating_status"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="@{selectArticleState.formatRatingCount}"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:visibility="@{selectArticleState.status == SelectScreenStatus.ON_SUCCESS?View.VISIBLE:View.GONE}" />
+
+        <me.ibrahimyilmaz.advancedandroidsample.base.DeactivatedViewPager
+            android:id="@+id/obligatory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:elevation="2dp"
+            android:overScrollMode="never"
+            android:visibility="@{selectArticleState.status == SelectScreenStatus.ON_SUCCESS?View.VISIBLE:View.GONE}"
+            binding:articles="@{selectArticleState.articles}"
+            binding:currentPage="@{selectArticleState.currentIndex}" />
+        <!-- Buttons-->
+        <LinearLayout
+            android:id="@+id/ll_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:visibility="@{selectArticleState.status == SelectScreenStatus.ON_SUCCESS?View.VISIBLE:View.GONE}">
+
+            <Button
+                android:id="@+id/btn_dislike"
+                android:layout_width="120dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:enabled="@{selectArticleState.status != SelectScreenStatus.ON_FINISHED}"
+                android:onClick="@{() -> presenter.rateArticle(RateStatus.DISLIKE)}"
+                android:text="Dislike"
+                android:theme="@style/PrimaryFlatButton" />
+
+            <Button
+                android:id="@+id/btn_like"
+                android:layout_width="120dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:enabled="@{selectArticleState.status != SelectScreenStatus.ON_FINISHED}"
+                android:onClick="@{() -> presenter.rateArticle(RateStatus.LIKE)}"
+                android:text="Like"
+                android:theme="@style/PrimaryFlatButton" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_review"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:enabled="@{selectArticleState.status == SelectScreenStatus.ON_FINISHED}"
+            android:text="Review"
+            android:theme="@style/PrimaryFlatButton"
+            android:visibility="@{selectArticleState.status == SelectScreenStatus.ON_SUCCESS ||selectArticleState.status == SelectScreenStatus.ON_FINISHED ?View.VISIBLE:View.GONE}" />
+
+    </LinearLayout>
+</layout>
+

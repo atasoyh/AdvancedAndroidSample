@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,27 +19,39 @@ import javax.inject.Inject
 abstract class BaseFragment : Fragment() {
 
     @Inject
+    lateinit var navigator: Navigator
+
+    @Inject
     lateinit var disposableManager: DisposableManager
 
     @LayoutRes
     protected abstract fun layoutRes(): Int
 
     protected abstract fun onViewBound(view: View)
-    protected fun subscriptions(): List<Disposable> = listOf()
+
+    open fun subscriptions(): List<Disposable> = listOf()
+
+    open fun actionBarVisible() = true
 
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
+    }
 
-        lifecycle.apply {
-            addObserver(disposableManager.apply {
-                addAll(subscriptions())
-            })
-        }
+    override fun onDestroyView() {
+        disposableManager.clear()
+        super.onDestroyView()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(layoutRes(), container, false)
+        (activity as AppCompatActivity).supportActionBar?.let { actionBar ->
+            actionBar.apply {
+                if (actionBarVisible()) show()
+                else hide()
+            }
+        }
+        disposableManager.addAll(subscriptions())
         onViewBound(view)
         return view
     }

@@ -38,6 +38,8 @@ ext {
     versionRoom = "1.1.1"
     versionMockito = "2.10.0"
     versionMockitoKotlin = "2.0.0-RC1"
+    versionConductor = "2.1.5"
+    versionRxRelay = "2.0.0"
 
 }
 task clean(type: Delete) {

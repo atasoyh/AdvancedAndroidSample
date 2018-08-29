@@ -29,4 +29,5 @@ abstract class FragmentTest {
     protected fun launch(intent: Intent?) {
         testRule.launchActivity(intent)
     }
+
 }

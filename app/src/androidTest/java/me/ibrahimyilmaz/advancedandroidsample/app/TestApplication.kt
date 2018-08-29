@@ -9,7 +9,7 @@ import me.ibrahimyilmaz.advancedandroidsample.di.app.TestApplicationComponent
 /**
  * Created by ibrahimyilmaz on 8/2/18 Project AdvancedAndroidSample.
  */
-class TestApplication : SampleApplication() {
+class TestApplication : Home24TaskApplication() {
     override fun initAppComponent(): TestApplicationComponent {
         return DaggerTestApplicationComponent.builder().sampleApplicationModule(SampleApplicationModule(this))
                 .build()

@@ -9,5 +9,10 @@ import android.support.v4.app.FragmentManager
 interface Navigator {
     fun initWithRoot(fm: FragmentManager, rootFragment: Fragment)
     fun push(fragment: Fragment)
-    fun pop()
+    fun pop(): Boolean
+    /***
+     * This method will be called When “Start” button is pressed.
+     * There is no argument of this method because “ Selection screen ” should be presented.
+     */
+    fun goToSelectionScreen()
 }

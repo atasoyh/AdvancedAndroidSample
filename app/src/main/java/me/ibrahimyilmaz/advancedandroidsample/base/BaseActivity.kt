@@ -38,4 +38,10 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
         navigator.initWithRoot(supportFragmentManager, rootFragment)
     }
 
+    override fun onBackPressed() {
+        val result = navigator.pop()
+        if (!result) {
+            super.onBackPressed()
+        }
+    }
 }

@@ -3,7 +3,6 @@ package me.ibrahimyilmaz.advancedandroidsample.di.base
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
-import me.ibrahimyilmaz.newsitkotlin.model.ZonedDateTimeAdapter
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -18,7 +17,7 @@ import javax.inject.Singleton
 class NetworkModule {
 
     @Provides
-    fun providesMoshi() = Moshi.Builder().add(ZonedDateTimeAdapter()).build()
+    fun providesMoshi() = Moshi.Builder().build()
 
 
     @Provides
@@ -35,7 +34,7 @@ class NetworkModule {
     fun provideRetrofit(moshi: Moshi, client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
                 .client(client)
-                .baseUrl("https://newsapi.org/v2/")
+                .baseUrl("https://api-mobile.home24.com/api/v1/")
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

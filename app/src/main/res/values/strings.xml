@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">AdvancedAndroidSample</string>
+    <string name="app_name">home24-Review</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="none">""</string>
+    <string name="error_on_network_loading">"Common error when network loading."</string>
+    <string name="message_all_articles_rated">"Hallelujah! You rated all articles. To review what you like, please press Review Button below."</string>
 </resources>

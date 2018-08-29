@@ -4,8 +4,8 @@ import android.app.Activity
 import android.support.test.rule.ActivityTestRule
 import me.ibrahimyilmaz.advancedandroidsample.app.TestApplication
 import me.ibrahimyilmaz.advancedandroidsample.base.TestNavigator
-import me.ibrahimyilmaz.advancedandroidsample.topheadlines.TestTopHeadLinesService
-import me.ibrahimyilmaz.advancedandroidsample.topheadlines.TopHeadLinesRepository
+import me.ibrahimyilmaz.advancedandroidsample.selection.ArticlesRepository
+import me.ibrahimyilmaz.advancedandroidsample.service.TestHome24ArticleService
 
 
 /**
@@ -13,11 +13,11 @@ import me.ibrahimyilmaz.advancedandroidsample.topheadlines.TopHeadLinesRepositor
  */
 class ControllerTestRule<T : Activity>(activityClass: Class<T>) : ActivityTestRule<T>(activityClass, true, false) {
 
-    val testTopHeadLinesService: TestTopHeadLinesService by lazy {
+    val testTopHeadLinesService: TestHome24ArticleService by lazy {
         TestApplication.component.topHeadLinesService()
 
     }
-    val repoRepository: TopHeadLinesRepository by lazy {
+    val repoRepository: ArticlesRepository by lazy {
         TestApplication.component.topHeadLinesRepository()
     }
 
@@ -28,6 +28,6 @@ class ControllerTestRule<T : Activity>(activityClass: Class<T>) : ActivityTestRu
     fun clearState() {
         testTopHeadLinesService.clearErrorFlag()
         testTopHeadLinesService.clearHoldFlag()
-        //        topHeadLinesRepository.clearCache();
+        repoRepository.clearCache()
     }
 }
