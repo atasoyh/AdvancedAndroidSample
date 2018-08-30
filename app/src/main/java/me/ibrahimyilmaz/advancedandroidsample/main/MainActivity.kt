@@ -8,6 +8,4 @@ import me.ibrahimyilmaz.advancedandroidsample.starter.StarterScreen
 class MainActivity : BaseActivity() {
     override val rootFragment: Fragment = StarterScreen()
     override val layoutResID = R.layout.activity_main
-
-
 }

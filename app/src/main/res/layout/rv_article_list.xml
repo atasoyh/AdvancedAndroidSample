@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="article"
+            type="me.ibrahimyilmaz.newsitkotlin.model.Article" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <me.ibrahimyilmaz.advancedandroidsample.base.SquareImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{article.imageUrl()}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="start|bottom"
+            android:background="#FF43ABC9"
+            android:gravity="center_vertical"
+            android:paddingLeft="8dp"
+            android:paddingBottom="14dp"
+            android:text="@{article.title}"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_liked"
+            android:visibility="@{article.liked()? View.VISIBLE:View.GONE}" />
+    </FrameLayout>
+</layout>

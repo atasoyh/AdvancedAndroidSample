@@ -6,6 +6,7 @@ import io.reactivex.schedulers.Schedulers
 import me.ibrahimyilmaz.advancedandroidsample.R
 import me.ibrahimyilmaz.advancedandroidsample.base.BaseTest
 import me.ibrahimyilmaz.advancedandroidsample.base.DisposableManager
+import me.ibrahimyilmaz.advancedandroidsample.base.Navigator
 import me.ibrahimyilmaz.newsitkotlin.model.Article
 import me.ibrahimyilmaz.newsitkotlin.model.ArticlesResponse
 import org.junit.Test
@@ -24,6 +25,8 @@ class SelectionPresenterTest : BaseTest() {
     lateinit var requester: ArticlesRequester
     @Mock
     lateinit var viewModel: SelectionViewModel
+    @Mock
+    lateinit var navigator: Navigator
 
     @Mock
     lateinit var disposableManager: DisposableManager
@@ -34,13 +37,13 @@ class SelectionPresenterTest : BaseTest() {
 
     override fun setUp() {
         MockitoAnnotations.initMocks(this)
-        `when`(viewModel.onArticleEvent()).thenReturn(mockedState)
+        `when`(viewModel.onSelectArticleState()).thenReturn(mockedState)
     }
 
     @Test
     fun test_error() {
         `when`(requester.listArticles()).thenReturn(Single.error(IOException()))
-        SelectionPresenter(viewModel, ArticlesRepository(requester, Schedulers.trampoline()), disposableManager)
+        SelectionPresenter(viewModel, ArticlesRepository(requester, Schedulers.trampoline()), disposableManager, navigator)
 
         val inOrder = Mockito.inOrder(mockedState)
 
@@ -53,7 +56,7 @@ class SelectionPresenterTest : BaseTest() {
         val articles = testUtils.loadJson("mock/articlesResponse.json", ArticlesResponse::class.java)?._embedded?.articles!!
         `when`(requester.listArticles()).thenReturn(Single.just<List<Article>>(articles))
 
-        SelectionPresenter(viewModel, ArticlesRepository(requester, Schedulers.trampoline()), disposableManager)
+        SelectionPresenter(viewModel, ArticlesRepository(requester, Schedulers.trampoline()), disposableManager, navigator)
 
         val inOrder = Mockito.inOrder(mockedState)
 
@@ -66,7 +69,7 @@ class SelectionPresenterTest : BaseTest() {
         val articles = testUtils.loadJson("mock/articlesResponse.json", ArticlesResponse::class.java)?._embedded?.articles!!
         `when`(requester.listArticles()).thenReturn(Single.just<List<Article>>(articles))
 
-        val presenter = SelectionPresenter(viewModel, ArticlesRepository(requester, Schedulers.trampoline()), disposableManager)
+        val presenter = SelectionPresenter(viewModel, ArticlesRepository(requester, Schedulers.trampoline()), disposableManager, navigator)
 
         val inOrder = Mockito.inOrder(mockedState)
         inOrder.verify(mockedState).accept(SelectArticleState(SelectScreenStatus.ON_LOADING))
@@ -81,7 +84,7 @@ class SelectionPresenterTest : BaseTest() {
         val articles = testUtils.loadJson("mock/articlesResponse.json", ArticlesResponse::class.java)?._embedded?.articles!!
         `when`(requester.listArticles()).thenReturn(Single.just<List<Article>>(articles))
 
-        val presenter = SelectionPresenter(viewModel, ArticlesRepository(requester, Schedulers.trampoline()), disposableManager)
+        val presenter = SelectionPresenter(viewModel, ArticlesRepository(requester, Schedulers.trampoline()), disposableManager, navigator)
         articles.forEach { presenter.rateArticle(RateStatus.LIKE) }
 
         val inOrder = Mockito.inOrder(mockedState)

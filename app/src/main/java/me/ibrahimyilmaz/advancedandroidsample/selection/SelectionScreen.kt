@@ -26,7 +26,7 @@ class SelectionScreen : BaseFragment() {
     }
 
     override fun subscriptions() = listOf(
-            viewModel.onSelectArticleState()
+            viewModel.selectArticleState()
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe { starterState ->
                         starterState?.let {

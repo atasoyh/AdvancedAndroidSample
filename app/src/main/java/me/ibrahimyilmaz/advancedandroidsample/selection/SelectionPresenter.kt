@@ -4,6 +4,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.BiConsumer
 import me.ibrahimyilmaz.advancedandroidsample.R
 import me.ibrahimyilmaz.advancedandroidsample.base.DisposableManager
+import me.ibrahimyilmaz.advancedandroidsample.base.Navigator
 import me.ibrahimyilmaz.advancedandroidsample.di.base.ScreenScope
 import me.ibrahimyilmaz.newsitkotlin.model.Article
 import javax.inject.Inject
@@ -13,7 +14,9 @@ import javax.inject.Inject
  */
 @ScreenScope
 class SelectionPresenter @Inject constructor(private val viewModel: SelectionViewModel,
-                                             private val repository: ArticlesRepository, private val disposableManager: DisposableManager) {
+                                             private val repository: ArticlesRepository, private val disposableManager: DisposableManager, val navigator: Navigator) {
+
+    var articles: ArrayList<Article> = arrayListOf()
 
     init {
         //when Starter Screen is appear list articles
@@ -28,15 +31,21 @@ class SelectionPresenter @Inject constructor(private val viewModel: SelectionVie
     }
 
     fun listArticles() {
-        viewModel.onArticleEvent().accept(SelectArticleState(status = SelectScreenStatus.ON_LOADING))
+        viewModel.onSelectArticleState().accept(SelectArticleState(status = SelectScreenStatus.ON_LOADING))
         disposableManager.add(
                 repository
                         .listArticles()
-                        .doOnSuccess { it -> viewModel.onArticleEvent().accept(handleArticles(it)) }
+                        .doOnSuccess { it ->
+                            articles.apply {
+                                clear()
+                                addAll(it)
+                            }
+                            viewModel.onSelectArticleState().accept(handleArticles(it))
+                        }
                         .doOnSubscribe { }
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnError { _ ->
-                            viewModel.onArticleEvent().accept(SelectArticleState(status = SelectScreenStatus.ON_ERROR, messageId = R.string.error_on_network_loading))
+                            viewModel.onSelectArticleState().accept(SelectArticleState(status = SelectScreenStatus.ON_ERROR, messageId = R.string.error_on_network_loading))
                         }
                         .subscribe(BiConsumer { _, _ -> }))
     }
@@ -44,11 +53,22 @@ class SelectionPresenter @Inject constructor(private val viewModel: SelectionVie
     fun rateArticle(rateStatus: RateStatus) {
         disposableManager.add(repository
                 .rateArticle(rateStatus)
-                .doOnSuccess { t -> viewModel.onArticleEvent().accept(handleArticles(t)) }
+                .doOnSuccess { it ->
+                    articles.apply {
+                        clear()
+                        addAll(it)
+                    }
+                    viewModel.onSelectArticleState().accept(handleArticles(it))
+                }
                 .doOnSubscribe { }
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnError { }
                 .subscribe(BiConsumer { _, _ -> }))
 
+    }
+
+
+    fun goToReviewScreen() {
+        navigator.goToSelectionScreen(articles)
     }
 }

@@ -3,6 +3,7 @@ package me.ibrahimyilmaz.advancedandroidsample.base
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -36,6 +37,7 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
         if (fragmentContainer == null)
             throw IllegalArgumentException("Activity should contain fragmentContainer!")
         navigator.initWithRoot(supportFragmentManager, rootFragment)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onBackPressed() {
@@ -44,4 +46,16 @@ abstract class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
             super.onBackPressed()
         }
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }

@@ -19,7 +19,7 @@
             android:layout_height="100dp"
             android:layout_centerInParent="true"
             android:onClick="@{() -> presenter.goToSelectionScreen()}"
-            android:text="Start"
+            android:text="@string/fragment_starter_btn_start"
             android:theme="@style/PrimaryFlatButton" />
     </RelativeLayout>
 

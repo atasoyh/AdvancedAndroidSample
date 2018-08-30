@@ -14,21 +14,12 @@ class SelectionViewModel @Inject constructor() {
 
     private val selectArticleState: BehaviorRelay<SelectArticleState> = BehaviorRelay.create()
 
-    fun onSelectArticleState(): Observable<SelectArticleState> {
+    fun selectArticleState(): Observable<SelectArticleState> {
         return selectArticleState
     }
 
-    fun onListArticleError(): Consumer<SelectArticleState> {
+    fun onSelectArticleState(): Consumer<SelectArticleState> {
         return selectArticleState
     }
-
-    fun onListArticleLoading(): Consumer<SelectArticleState> {
-        return selectArticleState
-    }
-
-    fun onArticleEvent(): Consumer<SelectArticleState> {
-        return selectArticleState
-    }
-
 
 }

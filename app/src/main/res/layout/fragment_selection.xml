@@ -84,7 +84,7 @@
                 android:layout_marginRight="10dp"
                 android:enabled="@{selectArticleState.status != SelectScreenStatus.ON_FINISHED}"
                 android:onClick="@{() -> presenter.rateArticle(RateStatus.DISLIKE)}"
-                android:text="Dislike"
+                android:text="@string/fragment_selection_btn_dislike"
                 android:theme="@style/PrimaryFlatButton" />
 
             <Button
@@ -95,7 +95,7 @@
                 android:layout_marginLeft="10dp"
                 android:enabled="@{selectArticleState.status != SelectScreenStatus.ON_FINISHED}"
                 android:onClick="@{() -> presenter.rateArticle(RateStatus.LIKE)}"
-                android:text="Like"
+                android:text="@string/fragment_selection_btn_like"
                 android:theme="@style/PrimaryFlatButton" />
         </LinearLayout>
 
@@ -104,7 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:enabled="@{selectArticleState.status == SelectScreenStatus.ON_FINISHED}"
-            android:text="Review"
+            android:onClick="@{()-> presenter.goToReviewScreen()}"
+            android:text="@string/fragment_selection_btn_review"
             android:theme="@style/PrimaryFlatButton"
             android:visibility="@{selectArticleState.status == SelectScreenStatus.ON_SUCCESS ||selectArticleState.status == SelectScreenStatus.ON_FINISHED ?View.VISIBLE:View.GONE}" />
 

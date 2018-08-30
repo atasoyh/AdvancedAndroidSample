@@ -3,10 +3,14 @@ package me.ibrahimyilmaz.advancedandroidsample.selection
 import android.databinding.BindingAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import me.ibrahimyilmaz.advancedandroidsample.R
+import me.ibrahimyilmaz.advancedandroidsample.review.LayoutManagerType
 import me.ibrahimyilmaz.newsitkotlin.model.Article
 
 

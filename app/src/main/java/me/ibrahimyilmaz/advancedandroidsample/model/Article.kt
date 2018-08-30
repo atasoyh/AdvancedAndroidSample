@@ -18,9 +18,10 @@ data class Media(
 
 data class Article(
         @Nullable val sku: String?,
+        @Nullable val title: String?,
         @Nullable val media: List<Media>?
 ) : Serializable {
-    var imageUrl: String? = media?.getOrNull(0)?.uri
+    fun imageUrl(): String? = media?.getOrNull(0)?.uri
     var rateStatus: RateStatus? = RateStatus.NONE
     fun liked(): Boolean = rateStatus == RateStatus.LIKE
     fun rated(): Boolean = rateStatus != null && rateStatus != RateStatus.NONE

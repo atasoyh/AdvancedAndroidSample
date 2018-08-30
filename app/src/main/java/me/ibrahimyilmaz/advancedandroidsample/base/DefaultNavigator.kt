@@ -3,7 +3,9 @@ package me.ibrahimyilmaz.advancedandroidsample.base
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import me.ibrahimyilmaz.advancedandroidsample.R
+import me.ibrahimyilmaz.advancedandroidsample.review.ReviewScreen
 import me.ibrahimyilmaz.advancedandroidsample.selection.SelectionScreen
+import me.ibrahimyilmaz.newsitkotlin.model.Article
 import javax.inject.Singleton
 
 /**
@@ -12,9 +14,6 @@ import javax.inject.Singleton
 @Singleton
 open class DefaultNavigator : Navigator {
 
-    constructor() {
-
-    }
 
     private lateinit var fragmentManager: FragmentManager
 
@@ -51,11 +50,12 @@ open class DefaultNavigator : Navigator {
     override fun pop() =
             fragmentManager.pop()
 
-    /**
-     *
-     */
     override fun goToSelectionScreen() {
         push(SelectionScreen.newInstance())
+    }
+
+    override fun goToSelectionScreen(articles: ArrayList<Article>) {
+        push(ReviewScreen.newInstance(articles))
     }
 
 }

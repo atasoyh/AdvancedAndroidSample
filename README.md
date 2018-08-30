@@ -1,26 +1,10 @@
-# AdvancedAndroidSample
+In this project,
+   Gradle:3.2.0-beta05
+   Kotlin: 1.2.51 versions are used.
+This project was implemented by using Android Studio 3.2 Preview Version.
 
-This is sample Android Application implemented by Kotlin to provide Sample of hot Android topics.
-
-It covers
- - LiveData
- - RxAndroid
- - DataBinding
- - Android Navigation
- - Dagger2
- - MVVM
- - Retrofit
- - Room
- - 2 Level Cache(File, Memory)
- - TDD 
- - Android UI Test
- 
-It will cover
-  -  Corotounes
-  -  WorkManager
-  -  ConstraintLayout
-  -  Android KTX (More)
-  -  Android Navigation Component Test Best Practises(Single Unit of Testing matters in TDD or BDD, so we need to change start Fragment while testing it.)
-
- 
-Any comment/ criticism/ something will be greately appreciated.
+MVVM&MVP Patterns are used. 
+Instead of using ViewModel of Android, BehavioralRelay Library is used.
+Instead of using Android Navigation Component, I handle Navigation by myself. Because Android Navigation component is not unit testable.
+Android Data Binding is used.
+Only Portrait Mode is supported. If needed I can implement Landscape version also.

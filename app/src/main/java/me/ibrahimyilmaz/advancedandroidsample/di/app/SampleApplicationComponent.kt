@@ -6,6 +6,7 @@ import me.ibrahimyilmaz.advancedandroidsample.app.Home24TaskApplication
 import me.ibrahimyilmaz.advancedandroidsample.di.base.NavigationModule
 import me.ibrahimyilmaz.advancedandroidsample.di.base.NetworkModule
 import me.ibrahimyilmaz.advancedandroidsample.di.main.MainActivityModule
+import me.ibrahimyilmaz.advancedandroidsample.di.review.ReviewScreenModule
 import me.ibrahimyilmaz.advancedandroidsample.di.selection.SelectionScreenModule
 import me.ibrahimyilmaz.advancedandroidsample.di.service.ServiceModule
 import me.ibrahimyilmaz.advancedandroidsample.di.starter.StarterFragmentModule
@@ -23,7 +24,8 @@ import javax.inject.Singleton
     (ServiceModule::class),
     (MainActivityModule::class),
     (SelectionScreenModule::class),
-    (StarterFragmentModule::class)
+    (StarterFragmentModule::class),
+    (ReviewScreenModule::class)
 ])
 interface SampleApplicationComponent {
     fun inject(application: Home24TaskApplication)
